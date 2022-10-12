@@ -16,7 +16,7 @@ class WatsNewViewController: UIViewController {
         return self.view as! WatsNewView
     }
     
-    // MARK: - Init
+    // MARK: - Init //
     init(app: ITunesApp) {
         self.app = app
         super.init(nibName: nil, bundle: nil)
