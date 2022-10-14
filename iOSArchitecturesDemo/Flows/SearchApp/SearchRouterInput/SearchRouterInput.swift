@@ -6,7 +6,6 @@
 //  Copyright © 2022 ekireev. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol SearchRouterInput {
