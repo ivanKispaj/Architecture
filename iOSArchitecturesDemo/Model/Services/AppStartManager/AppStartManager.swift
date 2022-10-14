@@ -30,8 +30,8 @@ final class AppStartManager {
             navControllers.append(self.configureNavigationController(with: controller))
         }
         tabBar.viewControllers = navControllers
-        tabBar.tabBar.tintColor = .blue
-        tabBar.tabBar.unselectedItemTintColor = .cyan
+        tabBar.tabBar.tintColor = .cyan
+        tabBar.tabBar.unselectedItemTintColor = .blue
         return tabBar
     }
     
