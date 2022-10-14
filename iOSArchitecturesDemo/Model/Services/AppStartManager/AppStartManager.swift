@@ -19,9 +19,6 @@ final class AppStartManager {
     func start() {
         let rootVC = SearchModuleBuilder.build()
         let navVC = self.configureTabBarController(with: rootVC)
-       // let navVC = self.configuredNavigationController
-       // navVC.viewControllers = rootVC
-        
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
     }
@@ -33,7 +30,8 @@ final class AppStartManager {
             navControllers.append(self.configureNavigationController(with: controller))
         }
         tabBar.viewControllers = navControllers
-        tabBar.tabBar.tintColor = .cyan
+        tabBar.tabBar.tintColor = .blue
+        tabBar.tabBar.unselectedItemTintColor = .cyan
         return tabBar
     }
     
