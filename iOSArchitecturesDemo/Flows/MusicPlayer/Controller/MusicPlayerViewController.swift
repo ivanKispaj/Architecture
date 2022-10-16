@@ -30,9 +30,7 @@ class MusicPlayerViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         self.musicHeaderView.playDelegate = self
-        if let songUrl = app.previewUrl {
-            self.playMusic(with: songUrl)
-        }
+       
         if let url = self.app.artwork {
             self.imageDownloader.getImage(fromUrl: url) { image, error in
                 self.musicHeaderView.logoView.image = image
@@ -46,10 +44,7 @@ class MusicPlayerViewController: UIViewController {
         self.timer.invalidate()
         
     }
-    deinit {
-        print("deinit")
-    }
-    
+
     // MARK: - Init
     init(app: ITunesSong) {
         self.app = app
@@ -69,6 +64,7 @@ class MusicPlayerViewController: UIViewController {
         self.musicHeaderView.playerProgress.setProgress(0, animated: false)
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeUp), userInfo: nil, repeats: true)
         self.timer.fire()
+        player.play()
     }
 }
 
@@ -76,7 +72,14 @@ class MusicPlayerViewController: UIViewController {
 extension MusicPlayerViewController: PlayButtonToggle {
     func playStop(_ state: Bool) {
         if state {
-            self.player.play()
+            if let songUrl = app.previewUrl {
+                if self.previewTime != 0 {
+                    self.player.play()
+                } else {
+                    self.playMusic(with: songUrl)
+                }
+                
+            }
             
             self.musicHeaderView.playIcon.image = UIImage(systemName: "play.circle")
         } else {
@@ -87,12 +90,19 @@ extension MusicPlayerViewController: PlayButtonToggle {
     
     @objc func timeUp() {
         if self.musicHeaderView.playState {
+            
             let step: Float = 100 / 30
             self.previewTime += step
             let progress: Float = self.previewTime / 100
-           // self.currentProgress += step
                 self.musicHeaderView.playerProgress.setProgress(progress, animated: true)
 
+            if self.previewTime >= 100 {
+                self.timer.invalidate()
+                self.player.pause()
+                self.musicHeaderView.playIcon.image = UIImage(systemName: "stop.circle")
+                self.musicHeaderView.playState = false
+                self.previewTime = 0
+            }
         }
     }
 }

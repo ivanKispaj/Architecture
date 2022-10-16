@@ -42,7 +42,7 @@ class MusicPlayerView: UIView {
     
     private(set) lazy var playIcon: UIImageView = {
         let playIcon = UIImageView()
-        playIcon.image = UIImage(systemName: "play.circle")
+        playIcon.image = UIImage(systemName: "stop.circle")
         playIcon.tintColor = .cyan
         playIcon.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(playStop))
@@ -121,11 +121,10 @@ class MusicPlayerView: UIView {
             self.passedtime.widthAnchor.constraint(equalToConstant: 30),
             self.playerProgress.leadingAnchor.constraint(equalTo: self.passedtime.trailingAnchor, constant: 20),
             self.playerProgress.centerYAnchor.constraint(equalTo: self.playerView.centerYAnchor),
-            self.playerProgress.widthAnchor.constraint(equalToConstant: 190),
             self.playerView.trailingAnchor.constraint(equalTo: self.totalTime.trailingAnchor, constant: 20),
             self.totalTime.centerYAnchor.constraint(equalTo: self.playerView.centerYAnchor),
             self.totalTime.widthAnchor.constraint(equalToConstant: 40),
-            self.totalTime.leadingAnchor.constraint(greaterThanOrEqualTo: self.playerProgress.trailingAnchor, constant: 10)
+            self.totalTime.leadingAnchor.constraint(equalTo: self.playerProgress.trailingAnchor, constant: 10)
         ])
         
         
