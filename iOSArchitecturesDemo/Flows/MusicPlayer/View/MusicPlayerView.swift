@@ -18,6 +18,7 @@ protocol PlayButtonToggle: AnyObject {
 class MusicPlayerView: UIView {
     
     // MARK: - Subviews
+    
     private(set) lazy var logoView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,24 +26,27 @@ class MusicPlayerView: UIView {
         return imageView
     }()
     
- 
     private(set) lazy var trackName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.sizeToFit()
+        label.textColor = .white
         return label
     }()
     
     private(set) lazy var playerView: UIView = {
         let playerView = UIView()
-        playerView.backgroundColor = .brown
+        playerView.backgroundColor = .systemGray
         playerView.translatesAutoresizingMaskIntoConstraints = false
         return playerView
     }()
     
     private(set) lazy var playIcon: UIImageView = {
         let playIcon = UIImageView()
-        playIcon.image = UIImage(systemName: "stop.circle")
+        playIcon.image = UIImage(systemName: "play.circle")
         playIcon.tintColor = .cyan
         playIcon.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(playStop))
@@ -53,7 +57,7 @@ class MusicPlayerView: UIView {
     
     private(set) lazy var playerProgress: UIProgressView = {
         let progress = UIProgressView()
-        progress.progressTintColor = .red
+        progress.progressTintColor = .cyan
         progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()
@@ -61,7 +65,7 @@ class MusicPlayerView: UIView {
     private(set) lazy var totalTime: UILabel = {
         let label = UILabel()
         label.text = "0:30"
-        label.textColor = .blue
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -70,15 +74,20 @@ class MusicPlayerView: UIView {
     private(set) lazy var passedtime: UILabel = {
         let label = UILabel()
         label.text = "0:00"
-        label.textColor = .red
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    // MARK: Play/Stop delegate
     weak var playDelegate: PlayButtonToggle!
+    
+    //MARK: player status
     var playState: Bool = false
+    
     // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupLayout()
@@ -88,10 +97,19 @@ class MusicPlayerView: UIView {
         self.setupLayout()
     }
 
+    //MARK: Public methods
     public func configure(with data: ITunesSong) {
         
     }
     
+    //MARK: selector playStop -> playIcon
+    
+    @objc func playStop() {
+        self.playState.toggle()
+        self.playDelegate.playStop(self.playState)
+    }
+    
+    //MARK: private methods
     private func setupLayout() {
         self.addSubview(logoView)
         self.addSubview(trackName)
@@ -103,9 +121,10 @@ class MusicPlayerView: UIView {
         NSLayoutConstraint.activate([
             self.logoView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
             self.logoView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.logoView.widthAnchor.constraint(equalToConstant: 150),
+            self.logoView.widthAnchor.constraint(equalToConstant: 250),
             self.logoView.heightAnchor.constraint(equalTo: self.logoView.widthAnchor, multiplier: 1 / 1),
-            self.trackName.centerXAnchor.constraint(equalTo: self.logoView.centerXAnchor),
+            self.trackName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            self.trailingAnchor.constraint(equalTo: self.trackName.trailingAnchor, constant: 30),
             self.trackName.topAnchor.constraint(equalTo: self.logoView.bottomAnchor, constant: 20),
             self.playerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.trailingAnchor.constraint(equalTo: self.playerView.trailingAnchor, constant: 20),
@@ -129,11 +148,7 @@ class MusicPlayerView: UIView {
         
         
     }
-    
-    @objc func playStop() {
-        self.playState.toggle()
-        self.playDelegate.playStop(self.playState)
-    }
+
 }
 
 
