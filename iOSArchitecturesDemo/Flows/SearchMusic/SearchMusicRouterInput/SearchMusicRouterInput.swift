@@ -18,8 +18,8 @@ final class SearchMusicRouter: SearchMusicRouterInput {
     weak var viewController: UIViewController?
     
     func openMusicDetails(for song: ITunesSong) {
-      //  let musicDetaillViewController = MusicDetailViewController(app: song)
-     //   self.viewController?.navigationController?.pushViewController(musicDetaillViewController, animated: true)
+        let musicDetaillViewController = MusicPlayerViewController(app: song)
+        self.viewController?.navigationController?.pushViewController(musicDetaillViewController, animated: false)
     }
     
 //    func openAppInITunes(_ app: ITunesSong) {

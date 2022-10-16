@@ -40,6 +40,8 @@ final class AppCell: UITableViewCell {
     private(set) lazy var appIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .black
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

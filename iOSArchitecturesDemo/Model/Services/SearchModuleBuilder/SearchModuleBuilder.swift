@@ -18,7 +18,7 @@ final class SearchModuleBuilder {
         let firstController = SearchViewController(presenter: presenter)
         firstController.navigationItem.title = "Search App"
         firstController.tabBarItem = UITabBarItem(title: "App", image: UIImage(systemName: "apps.iphone"), tag: 0)
-        presenter.viewInput = firstController as? any UIViewController & SearchViewInput
+        presenter.viewInput = firstController //as? any UIViewController & SearchViewInput
         router.viewController = firstController
         
         let musicRoute = SearchMusicRouter()
@@ -27,7 +27,7 @@ final class SearchModuleBuilder {
         let secondVC = SearchMusicViewController(presenter: musicPresenter)
         secondVC.navigationItem.title = "Search Music"
         secondVC.tabBarItem = UITabBarItem(title: "Music", image: UIImage(systemName: "music.note"), tag: 0)
-        musicPresenter.viewInput = secondVC as? any UIViewController & SearchMusicViewInput
+        musicPresenter.viewInput = secondVC // as? any UIViewController & SearchMusicViewInput
         musicRoute.viewController = secondVC
         
         return [firstController, secondVC]

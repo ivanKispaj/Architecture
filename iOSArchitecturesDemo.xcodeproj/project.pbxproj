@@ -19,6 +19,8 @@
 		63246D8128F9A2A000618DDC /* SearchMusicRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63246D8028F9A2A000618DDC /* SearchMusicRouterInput.swift */; };
 		63246D8328F9A56100618DDC /* SearchMusicInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63246D8228F9A56100618DDC /* SearchMusicInteractorInput.swift */; };
 		63246D8628F9A6B600618DDC /* SearchMusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63246D8528F9A6B600618DDC /* SearchMusicPresenter.swift */; };
+		63246D8B28FBDE5D00618DDC /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63246D8A28FBDE5D00618DDC /* MusicPlayerViewController.swift */; };
+		63246D8D28FBEB7B00618DDC /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63246D8C28FBEB7B00618DDC /* MusicPlayerView.swift */; };
 		633B0FB428D189390087D1B3 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633B0FB328D189390087D1B3 /* SearchPresenter.swift */; };
 		633B0FB728D18FC40087D1B3 /* SearchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633B0FB628D18FC40087D1B3 /* SearchModuleBuilder.swift */; };
 		63F3E8A028CDC7090034D6ED /* AppDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3E89F28CDC7090034D6ED /* AppDetailHeaderView.swift */; };
@@ -63,6 +65,8 @@
 		63246D8028F9A2A000618DDC /* SearchMusicRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicRouterInput.swift; sourceTree = "<group>"; };
 		63246D8228F9A56100618DDC /* SearchMusicInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicInteractorInput.swift; sourceTree = "<group>"; };
 		63246D8528F9A6B600618DDC /* SearchMusicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicPresenter.swift; sourceTree = "<group>"; };
+		63246D8A28FBDE5D00618DDC /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		63246D8C28FBEB7B00618DDC /* MusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
 		633B0FB328D189390087D1B3 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		633B0FB628D18FC40087D1B3 /* SearchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleBuilder.swift; sourceTree = "<group>"; };
 		63F3E89F28CDC7090034D6ED /* AppDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderView.swift; sourceTree = "<group>"; };
@@ -225,6 +229,31 @@
 			path = SearchMusicInteractorInput;
 			sourceTree = "<group>";
 		};
+		63246D8728FBDDD700618DDC /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				63246D8828FBDDF700618DDC /* View */,
+				63246D8928FBDDFD00618DDC /* Controller */,
+			);
+			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		63246D8828FBDDF700618DDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63246D8C28FBEB7B00618DDC /* MusicPlayerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63246D8928FBDDFD00618DDC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63246D8A28FBDE5D00618DDC /* MusicPlayerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		633B0FB228D189120087D1B3 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +321,7 @@
 			children = (
 				63246D7B28F9A12700618DDC /* SearchApp */,
 				63246D7028F93D2200618DDC /* SearchMusic */,
+				63246D8728FBDDD700618DDC /* MusicPlayer */,
 				E0E1D2A72034A3780011E01A /* AppDetail */,
 			);
 			path = Flows;
@@ -603,9 +633,11 @@
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
 				E0E1D395203AE5E20011E01A /* ITunesSearchResult.swift in Sources */,
 				63F3E8A628CE15060034D6ED /* WatsNewView.swift in Sources */,
+				63246D8B28FBDE5D00618DDC /* MusicPlayerViewController.swift in Sources */,
 				E0E1D392203AE58B0011E01A /* ITunesSearchService.swift in Sources */,
 				63246D3F28F91DD600618DDC /* ObservableOptions.swift in Sources */,
 				63246D8328F9A56100618DDC /* SearchMusicInteractorInput.swift in Sources */,
+				63246D8D28FBEB7B00618DDC /* MusicPlayerView.swift in Sources */,
 				E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */,
 				633B0FB428D189390087D1B3 /* SearchPresenter.swift in Sources */,
 				63246D4428F91F1600618DDC /* DownloadingApp.swift in Sources */,

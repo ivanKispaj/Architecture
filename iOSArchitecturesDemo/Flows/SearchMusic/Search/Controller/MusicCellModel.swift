@@ -9,20 +9,36 @@
 import Foundation
 
 struct MusicCellModel {
-    let title: String
-    let subtitle: String?
-    let rating: String?
+    let trackName: String
+    let artistName: String
+    let albumName: String
     let iconUrl: String?
+    let price: String
 }
 
 
 final class MusicCellModelFactory {
     
     static func cellModel(from model: ITunesSong) -> MusicCellModel {
-        return MusicCellModel(title: model.trackName,
-                            subtitle: model.artistName,
-                            rating: model.collectionName,
-                            iconUrl: model.artwork
+        var price = ""
+        var artistName = ""
+        var albumName = ""
+        if let trackPrice = model.trackPrice,
+           let currency = model.currency,
+           let artName = model.artistName,
+           let albmName = model.collectionName
+        
+        {
+            price = String(trackPrice) + ": " + currency
+            artistName = artName
+            albumName = albmName
+            
+        }
+        return MusicCellModel(trackName: model.trackName,
+                              artistName: artistName,
+                              albumName: albumName,
+                              iconUrl: model.artwork,
+                              price: price
         
         )
     }
