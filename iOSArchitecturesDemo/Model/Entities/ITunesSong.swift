@@ -62,39 +62,4 @@ public struct ITunesSong: Codable {
     }
 }
 
-//
-//resultCount = 50;
-//results =     (
-//            {
-//        artistId = 94804;
-//        artistName = Sting;
-//        artistViewUrl = "https://music.apple.com/us/artist/sting/94804?uo=4";
-//        artworkUrl100 = "https://is2-ssl.mzstatic.com/image/thumb/Music112/v4/b1/aa/8f/b1aa8fa1-d12f-318c-bab8-130066ced7bb/19UMGIM20617.rgb.jpg/100x100bb.jpg";
-//        artworkUrl30 = "https://is2-ssl.mzstatic.com/image/thumb/Music112/v4/b1/aa/8f/b1aa8fa1-d12f-318c-bab8-130066ced7bb/19UMGIM20617.rgb.jpg/30x30bb.jpg";
-//        artworkUrl60 = "https://is2-ssl.mzstatic.com/image/thumb/Music112/v4/b1/aa/8f/b1aa8fa1-d12f-318c-bab8-130066ced7bb/19UMGIM20617.rgb.jpg/60x60bb.jpg";
-//        collectionCensoredName = "Fields of Gold: The Best of Sting 1984-1994";
-//        collectionExplicitness = notExplicit;
-//        collectionId = 1455399771;
-//        collectionName = "Fields of Gold: The Best of Sting 1984-1994";
-//        collectionPrice = "9.99";
-//        collectionViewUrl = "https://music.apple.com/us/album/fields-of-gold/1455399771?i=1455400094&uo=4";
-//        country = USA;
-//        currency = USD;
-//        discCount = 1;
-//        discNumber = 1;
-//        isStreamable = 1;
-//        kind = song;
-//        previewUrl = "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/cf/02/f1/cf02f17f-6fac-bf20-255f-b00cd1268169/mzaf_5472059423905803400.plus.aac.p.m4a";
-//        primaryGenreName = Pop;
-//        releaseDate = "1993-02-25T12:00:00Z";
-//        trackCensoredName = "Fields of Gold";
-//        trackCount = 14;
-//        trackExplicitness = notExplicit;
-//        trackId = 1455400094;
-//        trackName = "Fields of Gold";
-//        trackNumber = 3;
-//        trackPrice = "1.29";
-//        trackTimeMillis = 219000;
-//        trackViewUrl = "https://music.apple.com/us/album/fields-of-gold/1455399771?i=1455400094&uo=4";
-//        wrapperType = track;
-//    },
+
