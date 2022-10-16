@@ -16,7 +16,8 @@ final class AppDetailViewController: UIViewController {
     lazy var watsNewController = WatsNewViewController(app: self.app)
     
     //MARK: - init
-    init(app: ITunesApp) { self.app = app
+    init(app: ITunesApp) {
+        self.app = app
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {

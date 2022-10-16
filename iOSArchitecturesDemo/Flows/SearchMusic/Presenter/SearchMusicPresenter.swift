@@ -1,17 +1,16 @@
 //
-//  SearchPresenter.swift
+//  SearchMusicPresenter.swift
 //  iOSArchitecturesDemo
 //
-//  Created by Ivan Konishchev on 14.09.2022.
+//  Created by Ivan Konishchev on 14.10.2022.
 //  Copyright © 2022 ekireev. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 //MARK: - Protocol
-protocol SearchViewInput: AnyObject {
-    var searchResults: [ITunesApp] { get set }
+protocol SearchMusicViewInput: AnyObject {
+    var searchResults: [ITunesSong] { get set }
     func showError(error: Error)
     func showNoResults()
     func hideNoResults()
@@ -19,20 +18,26 @@ protocol SearchViewInput: AnyObject {
     
 }
 
-protocol SearchViewOutput: AnyObject {
+protocol SearchMusicViewOutput: AnyObject {
     func viewDidSearch(with query: String)
-    func viewDidSelectApp(_ app: ITunesApp)
+    func viewDidSelectSong(_ song: ITunesSong)
     
 }
 
 //MARK: - Class presenter
-final class SearchPresenter {
+final class SearchMusicPresenter {
     
-    private let searchService = ITunesSearchService()
-    weak var viewInput: ( UIViewController & SearchViewInput)?
+    let interactor: SearchMusicInteractorInput
+    let router: SearchMusicRouterInput
+    weak var viewInput: ( UIViewController & SearchMusicViewInput)?
     
-    private func requestApps(with query: String) {
-        self.searchService.getApps(forQuery: query) { [weak self] result in
+    init(interactor: SearchMusicInteractorInput, router: SearchMusicRouterInput) {
+        self.interactor = interactor
+        self.router = router
+    }
+    
+    private func requestSong(with query: String) {
+        self.interactor.requestSong(with: query) { [weak self] result in
             guard let self = self else { return }
             self.viewInput?.throbber(show: false)
             result
@@ -48,8 +53,8 @@ final class SearchPresenter {
                     self.viewInput?.showError(error: $0)
                     
                 }
-            
         }
+        
     }
     
     
@@ -61,13 +66,16 @@ final class SearchPresenter {
     
 }
 
-extension SearchPresenter: SearchViewOutput {
+extension SearchMusicPresenter: SearchMusicViewOutput {
+    
     func viewDidSearch(with query: String) {
         self.viewInput?.throbber(show: true)
-        self.requestApps(with: query)
+        self.requestSong(with: query)
     }
-    func viewDidSelectApp(_ app: ITunesApp) {
-        self.openAppDetails(with: app)
+    
+    func viewDidSelectSong(_ song: ITunesSong) {
+        self.router.openMusicDetails(for: song)
     }
     
 }
+
